@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+artifacts/
+models/this-that-1.2/
+node_modules/
+.DS_Store

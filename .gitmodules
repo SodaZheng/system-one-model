@@ -1,0 +1,3 @@
+[submodule "vendor/this-that-model"]
+	path = vendor/this-that-model
+	url = https://github.com/FLock-io/this-that-model.git

@@ -1,0 +1,24 @@
+services:
+  thisthat:
+    image: one-system-model:1.2
+    platform: linux/amd64
+    pull_policy: never
+    container_name: one-system-model
+    restart: unless-stopped
+    ports:
+      - "${BIND_ADDRESS:-0.0.0.0}:${PORT:-8080}:8080"
+    environment:
+      API_KEY: ${API_KEY:?Run python3 scripts/init_env.py first}
+      THREADS: "8"
+      PREFILL_CHUNK_SIZE: "512"
+      MAX_CONTEXT_TOKENS: "32768"
+      MAX_QUEUED_REQUESTS: "8"
+    cpus: 8
+    mem_limit: 14g
+    memswap_limit: 14g
+    read_only: true
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    stop_grace_period: 30m
